@@ -127,8 +127,8 @@
 
   ## productivities
   CAM = "~/.local/bin/opencam";
-  DMUSIC = "yt-dlp --trim-filenames 80 --restrict-filenames -x --audio-format mp3 -S 'abr,codec' -o '~/Musics/%(playlist|NA)s/%(title)s [%(id)s].%(ext)s'";
-  DVIDEO = "yt-dlp --trim-filenames 80 --restrict-filenames -S 'res:720,codec,br,fps' -f 'bv*+ba/best' -o '~/Videos/%(playlist|NA)s/%(title)s [%(id)s].%(ext)s'";
+  ## DMUSIC = "yt-dlp --trim-filenames 80 --restrict-filenames -x --audio-format mp3 -S 'abr,codec' -o '~/Musics/%(playlist|NA)s/%(title)s [%(id)s].%(ext)s'";
+  ## DVIDEO = "yt-dlp --trim-filenames 80 --restrict-filenames -S 'res:720,codec,br,fps' -f 'bv*+ba/best' -o '~/Videos/%(playlist|NA)s/%(title)s [%(id)s].%(ext)s'";
   IMGCOMPRESS = "~/.local/bin/compress-images.sh";
   DTAR = "~/.local/bin/tar.sh"; ## overwite folder to folder.tar.gz
   XYZ = "~/.local/bin/xyz.sh";
@@ -140,3 +140,5 @@
   REBOOT = "sudo reboot";
   OFF = "poweroff";
 }
+
+

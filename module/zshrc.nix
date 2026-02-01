@@ -132,7 +132,96 @@ fi
 #  ┴ ┴└─┘ ┴ └─┘  └─┘ ┴ ┴ ┴┴└─ ┴
 # $HOME/.local/bin/colorscript -r
 #disable-fzf-tab
-  	'';
+
+
+# === DOWNLOAD AUDIO (MUSIC) ===
+DMUSIC() {
+    # Ambil argumen pertama sebagai URL
+    local url="$1"
+
+    # Cek apakah ada URL
+    if [ -z "$url" ]; then
+        echo "Usage: DMUSIC \"<url>\""
+        return 1
+    fi
+
+    yt-dlp \
+        --no-playlist \
+        --extract-audio \
+        --audio-format mp3 \
+        --audio-quality 0 \
+        --embed-thumbnail \
+        --embed-metadata \
+        --parse-metadata "playlist_index:%(track_number)s" \
+        --format "ba/best" \
+        --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" \
+        --add-header "Accept-Language: en-US,en;q=0.9" \
+        --retry-sleep 3 \
+        --retries infinite \
+        --download-archive "$HOME/Musics/downloaded_archive.txt" \
+        --output "$HOME/Musics/%(artist)s/%(title)s.%(ext)s" \
+        --extractor-args "youtube:player_client=android" \
+        --restrict-filenames \
+        --windows-filenames \
+        "$url"
+}
+
+# === DOWNLOAD VIDEO ===
+DVIDEO() {
+    local url="$1"
+
+    if [ -z "$url" ]; then
+        echo "Usage: DVIDEO \"<url>\""
+        return 1
+    fi
+
+    # Hapus duplikat --format yang salah di kodemu sebelumnya
+    yt-dlp \
+        --no-playlist \
+        --format "bestvideo[height<=720]+bestaudio/best[height<=720]" \
+        --embed-thumbnail \
+        --embed-metadata \
+        --embed-chapters \
+        --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" \
+        --add-header "Accept-Language: en-US,en;q=0.9" \
+        --retry-sleep 3 \
+        --retries infinite \
+        --merge-output-format mkv \
+        --download-archive "$HOME/Videos/downloaded_archive.txt" \
+        --output "$HOME/Videos/%(uploader)s/%(title)s [%(id)s].%(ext)s" \
+        --extractor-args "youtube:player_client=android" \
+        --restrict-filenames \
+        "$url"
+}
+
+# === DOWNLOAD PLAYLIST ===
+DPLAYLIST() {
+    local url="$1"
+
+    if [ -z "$url" ]; then
+        echo "Usage: DPLAYLIST \"<url>\""
+        return 1
+    fi
+
+    yt-dlp \
+        --extract-audio \
+        --audio-format mp3 \
+        --audio-quality 0 \
+        --embed-thumbnail \
+        --embed-metadata \
+        --yes-playlist \
+        --ignore-errors \
+        --format "ba/best" \
+        --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" \
+        --add-header "Accept-Language: en-US,en;q=0.9" \
+        --retry-sleep 3 \
+        --retries infinite \
+        --download-archive "$HOME/Musics/downloaded_archive.txt" \
+        --output "$HOME/Musics/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" \
+        --extractor-args "youtube:player_client=android" \
+        "$url"
+}
+  '';
   	executable = true;
   };
 }
