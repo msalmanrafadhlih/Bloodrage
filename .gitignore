@@ -1,0 +1,39 @@
+# ---- Nix build artifacts ----
+/result
+/result-*
+/.nix-*
+/.cache/
+/tmp/
+/var/
+
+# ---- direnv (optional, kalau pakai) ----
+/.direnv/
+/.envrc
+
+# ---- Ignore machine-specific configs ----
+# flake.lock
+# hardware-configuration.nix
+# user/hardware-configuration.nix
+
+# ---- System & Editor junk ----
+*~
+*.swp
+*.swo
+*.bak
+*.log
+
+# ---- IDE / Editor files ----
+.vscode/
+.idea/
+*.iml
+
+# ---- OS junk ----
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# ---- Secrets (just in case) ----
+*.secret
+*.private
+*.key
