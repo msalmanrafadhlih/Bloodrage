@@ -19,7 +19,7 @@
 		options = "--delete-older-than 3d";
 	};
 	
-
+	programs.direnv.enable = true;
 	security.rtkit.enable = true;
 	system.stateVersion = "25.05";
 	nixpkgs.config.allowUnfree = true;
