@@ -115,6 +115,7 @@
         ./module/gtk.nix
         ./module/thunar.nix
         ./module/network.nix
+        ./module/virtualisation.nix
         # ./module/firefox-preferences.nix
         # ./module/power.nix
         # ./module/acme.nix

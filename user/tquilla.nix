@@ -8,8 +8,8 @@
 
 #	~/.config
     configs = {
-		bspwm = "bspwm";
-	  	polybar = "polybar";
+		pwm = "bspwm";
+		polybar = "polybar";
 		sxhkd = "sxhkd";
 		nano = "nano";
 		rofi = "rofi";
@@ -25,6 +25,7 @@
 		geany = "geany";
 		yazi = "yazi";
 		kitty = "kitty";
+		helix = "helix";
 		"com.kdocker" = "com.kdocker";
 
 #  		alacritty = "alacritty";
